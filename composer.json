@@ -1,0 +1,19 @@
+{
+    "name": "pavelkhizhenok/supportclasses",
+    "description": "Module for base classes",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Pavelkhizhenok\\SupportClasses\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Khizhenok Pavel",
+            "email": "khizhenokp@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4"
+    }
+}
