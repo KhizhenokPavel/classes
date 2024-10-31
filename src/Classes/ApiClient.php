@@ -43,9 +43,9 @@ abstract class ApiClient implements ApiClientInterface {
     protected string $error = '';
 
 
-    public function __construct(array $config) {
+    public function __construct() {
 
-        $this->initConfig($config);
+        $this->initConfig($this->getConfig());
 
     }
 
