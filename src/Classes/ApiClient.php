@@ -17,6 +17,8 @@ abstract class ApiClient implements ApiClientInterface {
     public const BODY_FORMAT_NAME_JSON = 'json';
     public const BODY_FORMAT_NAME_STRING = 'string';
 
+    public const BAD_RESPONSE_STATUS_CODE_CLASSES = ['3, 4, 5'];
+
     public const AVAILABLE_REQUEST_PROTOCOLS = array(
         self::REQUEST_PROTOKOL_NAME_HTTP,
         self::REQUEST_PROTOKOL_NAME_HTTPS,
@@ -173,6 +175,20 @@ abstract class ApiClient implements ApiClientInterface {
             'code' => $httpCode,
             'response' => $this->formatResonse($response),
         );
+
+    }
+
+    protected function getResponseBody(array $response): array|bool {
+
+        if (
+            empty($response['code']) 
+            || !isset($response['response'])
+            || in_array($response['code'][0], static::BAD_RESPONSE_STATUS_CODE_CLASSES)
+        ) {
+            return false;
+        }
+
+        return $response['response'];
 
     }
 
