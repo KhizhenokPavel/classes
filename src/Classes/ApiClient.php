@@ -172,7 +172,7 @@ abstract class ApiClient implements ApiClientInterface {
         curl_close($ch);
 
         return array(
-            'code' => $httpCode,
+            'code' => (string) $httpCode,
             'response' => $this->formatResonse($response),
         );
 
