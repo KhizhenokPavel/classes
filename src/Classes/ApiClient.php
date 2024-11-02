@@ -192,6 +192,14 @@ abstract class ApiClient implements ApiClientInterface {
 
     }
 
+    protected function sendRequestAndGetResponseBody(string $requestUrl = '', array $params = array(), string $method = self::REQUEST_METHOD_GET, array $headers = array()): array|bool {
+
+        return $this->getResponseBody(
+            $this->sendRequest($requestUrl, $params, $method, $headers)
+        );
+
+    }
+
     protected function getRequestOptions(string $requestUrl, array $params, string $method, array $headers): array {
 
         $requestUri = $this->requestProtocol . '://' . $this->requestUrl . $requestUrl;
